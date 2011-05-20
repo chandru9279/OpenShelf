@@ -16,14 +16,14 @@
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="a3974460-68ff-4cbb-adeb-ce3761320591" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/griffon-app/controllers/openshelf/OpenShelfController.groovy" afterPath="$PROJECT_DIR$/griffon-app/controllers/openshelf/OpenShelfController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpenShelf.ipr" afterPath="$PROJECT_DIR$/OpenShelf.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/griffon-app/controllers/openshelf/Utils.groovy" afterPath="$PROJECT_DIR$/griffon-app/controllers/openshelf/Utils.groovy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/griffon-app/models/openshelf/Book.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/griffon-app/controllers/openshelf/Flows.groovy" afterPath="$PROJECT_DIR$/griffon-app/controllers/openshelf/Flows.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/griffon-app/views/openshelf/OpenShelfView.groovy" afterPath="$PROJECT_DIR$/griffon-app/views/openshelf/OpenShelfView.groovy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/griffon-app/models/openshelf/Borrow.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OpenShelf.iws" afterPath="$PROJECT_DIR$/OpenShelf.iws" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/javase-1.6-SNAPSHOT.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/griffon-app/controllers/openshelf/Flows.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/core-1.6-SNAPSHOT.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/griffon-app/models/openshelf/OpenShelfModel.groovy" afterPath="$PROJECT_DIR$/griffon-app/models/openshelf/OpenShelfModel.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/griffon-app/controllers/openshelf/Utils.groovy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/griffon-app/models/openshelf/Employee.groovy" />
     </list>
     <ignored path="$USER_HOME_GRIFFON$/" />
     <ignored path="$USER_HOME_GRAILS$/" />
@@ -42,21 +42,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/griffon-app/controllers/openshelf/OpenShelfController.groovy" line="80" class="Class at OpenShelfController.groovy:81" package="">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
     <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -101,7 +86,25 @@
       <file leaf-file-name="OpenShelfController.groovy" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/griffon-app/controllers/openshelf/OpenShelfController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="19" selection-start="2645" selection-end="2645" vertical-scroll-proportion="0.7249191">
+            <state line="42" column="0" selection-start="1400" selection-end="1400" vertical-scroll-proportion="0.6699029">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Flows.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/griffon-app/controllers/openshelf/Flows.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="2" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Borrow.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/griffon-app/models/openshelf/Borrow.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="16" selection-start="82" selection-end="82" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -110,7 +113,7 @@
       <file leaf-file-name="Utils.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/griffon-app/controllers/openshelf/Utils.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="5" selection-start="1044" selection-end="1044" vertical-scroll-proportion="0.0">
+            <state line="22" column="0" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -134,46 +137,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MultiFormatReader.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/core-1.6-SNAPSHOT.jar!/com/google/zxing/MultiFormatReader.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="42" selection-start="969" selection-end="973" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BufferToImage.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/lib/jmf.jar!/javax/media/util/BufferToImage.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="22" selection-start="713" selection-end="713" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Image.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.6.0_20/src.zip!/java/awt/Image.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="22" selection-start="780" selection-end="780" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BufferedImage.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.6.0_20/src.zip!/java/awt/image/BufferedImage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="35" selection-start="2010" selection-end="2030" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="OpenShelfView.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/griffon-app/views/openshelf/OpenShelfView.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="7" selection-start="604" selection-end="604" vertical-scroll-proportion="0.0">
+            <state line="16" column="18" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -182,7 +149,25 @@
       <file leaf-file-name="OpenShelfModel.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/griffon-app/models/openshelf/OpenShelfModel.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="32" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0">
+            <state line="10" column="1" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Book.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/griffon-app/models/openshelf/Book.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="1" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Employee.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/griffon-app/models/openshelf/Employee.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="0" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -201,10 +186,13 @@
         <option value="$PROJECT_DIR$/griffon-app/views/x.form" />
         <option value="$PROJECT_DIR$/griffon-app/views/x.java" />
         <option value="$PROJECT_DIR$/griffon-app/views/openshelf/OpenShelfView.java" />
+        <option value="$PROJECT_DIR$/griffon-app/models/openshelf/Book.groovy" />
+        <option value="$PROJECT_DIR$/griffon-app/models/openshelf/Employee.groovy" />
+        <option value="$PROJECT_DIR$/griffon-app/models/openshelf/Borrow.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/controllers/openshelf/Utils.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/controllers/openshelf/Flows.groovy" />
-        <option value="$PROJECT_DIR$/griffon-app/models/openshelf/OpenShelfModel.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/views/openshelf/OpenShelfView.groovy" />
+        <option value="$PROJECT_DIR$/griffon-app/models/openshelf/OpenShelfModel.groovy" />
         <option value="$PROJECT_DIR$/griffon-app/controllers/openshelf/OpenShelfController.groovy" />
       </list>
     </option>
@@ -711,7 +699,7 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928064" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Griffon View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15424165" sideWeight="0.66633165" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Griffon View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1625964" sideWeight="0.66633165" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -763,31 +751,9 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/griffon-app/lifecycle/Shutdown.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="12" selection-start="371" selection-end="371" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/lifecycle/Startup.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="21" selection-start="380" selection-end="380" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/conf/Application.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="10" selection-start="303" selection-end="303" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/lifecycle/Stop.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/controllers/openshelf/Flows.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="6" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/javase-1.6-SNAPSHOT.jar!/com/google/zxing/client/j2se/BufferedImageLuminanceSource.class">
@@ -821,20 +787,6 @@
         <state line="61" column="35" selection-start="2010" selection-end="2030" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/views/openshelf/OpenShelfView.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="7" selection-start="604" selection-end="604" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/griffon-app/models/openshelf/OpenShelfModel.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="32" selection-start="188" selection-end="188" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/griffon-0.9.3-beta-1-bin/griffon-0.9.3-beta-1/dist/griffon-rt-0.9.3-beta-1.jar!/griffon/swing/SwingUIThreadHandler.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="16" selection-start="539" selection-end="539" vertical-scroll-proportion="-9.916667">
@@ -849,16 +801,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/models/openshelf/Book.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="1" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/models/openshelf/Employee.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/models/openshelf/Borrow.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="16" selection-start="82" selection-end="82" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/controllers/openshelf/Utils.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="5" selection-start="1044" selection-end="1044" vertical-scroll-proportion="0.0">
+        <state line="22" column="0" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/controllers/openshelf/Flows.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="2" selection-start="36" selection-end="36" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/models/openshelf/OpenShelfModel.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="1" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/griffon-app/views/openshelf/OpenShelfView.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="18" selection-start="516" selection-end="516" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/griffon-app/controllers/openshelf/OpenShelfController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="19" selection-start="2645" selection-end="2645" vertical-scroll-proportion="0.7249191">
+        <state line="42" column="0" selection-start="1400" selection-end="1400" vertical-scroll-proportion="0.6699029">
           <folding />
         </state>
       </provider>

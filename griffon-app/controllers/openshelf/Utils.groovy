@@ -34,4 +34,10 @@ class Utils {
     }
   }
 
+  def getBucket()
+  {
+    return ['eid', 'bid']
+  }
+
+
 }

@@ -28,14 +28,8 @@ class OpenShelfController {
     player.start();
   }
 
-//  void mvcGroupInit(Map args) {
-//  }
-//
-//  void mvcGroupDestroy() {
-//  }
-
-
   def idling = {
+
     while (true) {
       FrameGrabbingControl fgc = (FrameGrabbingControl) player.getControl("javax.media.control.FrameGrabbingControl")
       def frameBuffer = fgc.grabFrame()
@@ -50,7 +44,8 @@ class OpenShelfController {
         react(result.text)
 
       } catch (Exception e) {
-        Thread.sleep(1000)
+
+      } finally {
       }
     }
   }
@@ -61,32 +56,36 @@ class OpenShelfController {
     println incoming;
 
     try {
-      def parsed = parse(incoming)
-      //Flows.routines(parsed.key)(parsed.value)
-      println parsed.key + ":" + parsed.value
-      model.employee = parsed.key.contains("eid") ? parsed.value : '';
-      model.book = parsed.key.contains("bid") ? parsed.value : '';
+      def parsed = [:]
+      parse(incoming, parsed);
+      routines[parsed.key](model, parsed.value)
       view.employee.text = model.employee
       view.book.text = model.book
     }
     catch (exception) {
       exception.printStackTrace()
-      //model.errorMessage = exception.message
     }
   }
 
 
-  def parse(String incoming) {
+  def parse(String incoming, Map parsed) {
     incoming = incoming.replace("[", "").replace("]", "").trim();
     if (!incoming.contains(":")) throw new Exception("Unknown QR Code, Can't parse $incoming")
     def keyValue = incoming.split(":")
     if (keyValue.length != 2) throw new Exception("Unknown QR Code, Can't parse $incoming")
-    model.employee = keyValue[0].contains("eid") ? keyValue[1] : '';
-    model.book = keyValue[0].contains("bid") ? keyValue[1] : '';
-    view.employee.text = model.employee
-    view.book.text = model.book
-    return [key: keyValue[0], value: keyValue[1]]
+    parsed['key'] = keyValue[0]
+    parsed['value'] = keyValue[1]
   }
 
+  def routines = [
+          "bid": {
+            OpenShelfModel model, String value ->
+            model.book = value;
+          },
+          "eid": {
+            OpenShelfModel model, String value ->
+            model.employee = value;
+          }
+  ]
 }
 
