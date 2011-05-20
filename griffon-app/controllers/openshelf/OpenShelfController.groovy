@@ -13,8 +13,8 @@ class OpenShelfController {
     //    // this method is called when the group is destroyed
     // }
 
-    /*
     def action = { evt = null ->
-    }
-    */
+          
+      }
+
 }
