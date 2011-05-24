@@ -13,12 +13,15 @@ import com.google.zxing.common.HybridBinarizer
 import com.google.zxing.Reader;
 import com.google.zxing.MultiFormatReader
 import com.google.zxing.Result
+import com.google.gson.Gson
 
 class OpenShelfController {
 
   def view
   def model
   def player
+  def employee
+  def book
 
   OpenShelfController() {
     def cameraName = "vfw:Microsoft WDM Image Capture (Win32):0";
@@ -27,6 +30,12 @@ class OpenShelfController {
     player = Manager.createRealizedPlayer(locator);
     player.start();
   }
+
+  void mvcGroupInit(Map args) {
+    println 'mvc initialized..........'
+    //view.captureButton.doClick()
+  }
+
 
   def idling = {
 
@@ -41,11 +50,13 @@ class OpenShelfController {
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source))
         Reader reader = new MultiFormatReader()
         Result result = reader.decode(bitmap)
+        //println result.text
         react(result.text)
 
       } catch (Exception e) {
 
       } finally {
+        Thread.sleep(300)
       }
     }
   }
@@ -53,14 +64,15 @@ class OpenShelfController {
 
   def react = {
     String incoming ->
+    java.awt.Toolkit.getDefaultToolkit().beep()
     println incoming;
 
     try {
       def parsed = [:]
       parse(incoming, parsed);
-      routines[parsed.key](model, parsed.value)
-      view.employee.text = model.employee
-      view.book.text = model.book
+      //routines[parsed.key](model, parsed.value)
+      view.employee.text = employee?.name
+      view.book.text = book?.title;
     }
     catch (exception) {
       exception.printStackTrace()
@@ -69,15 +81,25 @@ class OpenShelfController {
 
 
   def parse(String incoming, Map parsed) {
-    incoming = incoming.replace("[", "").replace("]", "").trim();
-    if (!incoming.contains(":")) throw new Exception("Unknown QR Code, Can't parse $incoming")
-    def keyValue = incoming.split(":")
-    if (keyValue.length != 2) throw new Exception("Unknown QR Code, Can't parse $incoming")
-    parsed['key'] = keyValue[0]
-    parsed['value'] = keyValue[1]
+    //incoming = incoming.replace("[", "").replace("]", "").trim();
+    //if (!incoming.contains(":")) throw new Exception("Unknown QR Code, Can't parse $incoming")
+    //def keyValue = incoming.split(":")
+    //if (keyValue.length != 2) throw new Exception("Unknown QR Code, Can't parse $incoming")
+    Gson gson = new Gson();
+    if (incoming.contains("name")) {
+      employee = gson.fromJson(incoming, Employee.class)
+    } else if (incoming.contains("title")) {
+      book = gson.fromJson(incoming, Book.class)
+    }
+    if (employee != null && book != null) {
+
+      /*def borrow = Borrow.findByEmployeeAndBook(employee, book)
+borrow ? view.action.text = "Renew it" : "Return it"*/
+    }
+
   }
 
-  def routines = [
+  /*def routines = [
           "bid": {
             OpenShelfModel model, String value ->
             model.book = value;
@@ -86,6 +108,6 @@ class OpenShelfController {
             OpenShelfModel model, String value ->
             model.employee = value;
           }
-  ]
+  ]*/
 }
 

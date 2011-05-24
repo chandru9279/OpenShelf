@@ -2,5 +2,6 @@ package openshelf
 
 class Book {
   String title;
-  String bookId;
+  String isbn;
+  String copyId;
 }

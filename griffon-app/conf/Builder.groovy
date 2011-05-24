@@ -7,3 +7,4 @@ root {
         view = '*'
     }
 }
+root.'GsqlGriffonAddon'.addon=true

@@ -23,6 +23,7 @@
         <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="module" module-name="OpenShelf-griffonPlugins" />
   </component>
 </module>
 
