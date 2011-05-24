@@ -1,5 +1,7 @@
 
-DROP TABLE IF EXISTS Books;
+Drop database openshelf;
+create database openshelf;
+use openshelf;
 CREATE TABLE Books(
    isbn varchar(30) NOT NULL,
    copyid varchar(5) NOT NULL,
@@ -8,7 +10,6 @@ CREATE TABLE Books(
 );
 
 
-DROP TABLE IF EXISTS Employees;
 CREATE TABLE Employees(
    employeeid varchar(10) NOT NULL primary key,
    name varchar(100) NOT NULL
@@ -16,14 +17,14 @@ CREATE TABLE Employees(
 
 
 
-DROP TABLE IF EXISTS Borrow;
 CREATE TABLE Borrow(
    isbn varchar(30) NOT NULL,
    copyid varchar(5) NOT NULL,
    employeeid varchar(10) NOT NULL,
+   status varchar(10) NOT NULL,
    foreign key(isbn,copyid) references Books(isbn,copyid),
-   foreign key(employeeid) references Employees(employeeid)
-
+   foreign key(employeeid) references Employees(employeeid),
+    primary key(isbn,copyid,employeeid)
 );
 
 

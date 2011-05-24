@@ -36,10 +36,12 @@ class OpenShelfController {
     //view.captureButton.doClick()
   }
 
+  def reactedTime = System.currentTimeMillis()
 
   def idling = {
 
     while (true) {
+
       FrameGrabbingControl fgc = (FrameGrabbingControl) player.getControl("javax.media.control.FrameGrabbingControl")
       def frameBuffer = fgc.grabFrame()
       def bufferToImageConverter = new BufferToImage((VideoFormat) frameBuffer.getFormat())
@@ -50,8 +52,12 @@ class OpenShelfController {
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source))
         Reader reader = new MultiFormatReader()
         Result result = reader.decode(bitmap)
-        //println result.text
+
+        if (((System.currentTimeMillis() - reactedTime) / 1000) > 30)
+          resetForNextTranscation()
+
         react(result.text)
+
 
       } catch (Exception e) {
 
@@ -64,6 +70,7 @@ class OpenShelfController {
 
   def react = {
     String incoming ->
+    reactedTime = System.currentTimeMillis();
     java.awt.Toolkit.getDefaultToolkit().beep()
     println incoming;
 
@@ -71,8 +78,7 @@ class OpenShelfController {
       def parsed = [:]
       parse(incoming, parsed);
       //routines[parsed.key](model, parsed.value)
-      view.employee.text = employee?.name
-      view.book.text = book?.title;
+
     }
     catch (exception) {
       exception.printStackTrace()
@@ -88,15 +94,79 @@ class OpenShelfController {
     Gson gson = new Gson();
     if (incoming.contains("name")) {
       employee = gson.fromJson(incoming, Employee.class)
+      updateEmployeeView()
     } else if (incoming.contains("title")) {
       book = gson.fromJson(incoming, Book.class)
+      updateBookView()
     }
     if (employee != null && book != null) {
 
-      /*def borrow = Borrow.findByEmployeeAndBook(employee, book)
-borrow ? view.action.text = "Renew it" : "Return it"*/
+      withSql {sql ->
+        updateBookList(sql, book)
+        updateEmployeeList(sql, employee)
+        createBorrowTransaction(sql, book, employee)
+        Thread.sleep(2000)
+        resetForNextTranscation()
+      }
+
     }
 
+  }
+
+  def updateBookView() {
+    view.book.text = book?.title;
+  }
+
+  def updateEmployeeView() {
+    view.employee.text = employee?.name
+  }
+
+  def resetForNextTranscation() {
+    resetModel();
+    clearView()
+  }
+
+  private def resetModel() {
+    employee = null;
+    book = null
+  }
+
+  private def clearView() {
+    view.action.text = ""
+    view.book.text = ""
+    view.employee.text = ""
+  }
+
+  private def updateEmployeeList(sql, employee) {
+    def employeeRow = sql.firstRow("Select * from employees where employeeId=?", [employee.id])
+    if (employeeRow == null) {
+      def employees = sql.dataSet("employees")
+      employees.add(employeeId: employee.id, name: employee.name)
+    }
+  }
+
+  private def updateBookList(sql, book) {
+    def bookRow = sql.firstRow("Select * from books where isbn=? and copyId=?", [book.isbn, book.copyId])
+    if (bookRow == null) {
+      def books = sql.dataSet("books")
+      books.add(isbn: book.isbn, copyid: book.copyId, title: book.title)
+    }
+  }
+
+  private def createBorrowTransaction(sql, book, employee) {
+    def borrowRow = sql.firstRow("Select * from borrow where isbn=? and copyId=? and employeeId=?", [book.isbn, book.copyId, employee.id])
+    def borrow = sql.dataSet("borrow")
+    if (borrowRow == null) {
+      borrow.add(employeeId: employee.id, isbn: book.isbn, copyId: book.copyId, status: "CO")
+      updateActionStatus("Renew it");
+    } else if (borrowRow.status.equals("CO")) {
+      sql.execute("delete from borrow where isbn=? and copyId=? and employeeId=?", [book.isbn, book.copyId, employee.id])
+      updateActionStatus("Return it");
+    }
+  }
+
+  def updateActionStatus(String actionStatus) {
+    view.action.text = actionStatus;
   }
 
   /*def routines = [
